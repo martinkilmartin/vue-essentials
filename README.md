@@ -110,6 +110,7 @@ export default {
 <template>
   <button @click="inc">{{ count }}</button>
 </template>
+```
 
 #### Composition
 
