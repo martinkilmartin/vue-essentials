@@ -7,7 +7,7 @@
 
 #### Options
 
-```js
+```vue
 <script>
 export default {
   data() {
@@ -20,12 +20,12 @@ export default {
 
 <template>
   <h1>{{ message.split('').reverse().join('') }}</h1>
-</template
+</template>
 ```
 
 #### Composition
 
-```js
+```vue
 <script setup>
 import { ref } from 'vue'
 
@@ -43,7 +43,7 @@ const message = ref('Hi Earthlings!')
 
 #### Options
 
-```js
+```vue
 <script>
 export default {
   data() {
@@ -67,7 +67,7 @@ export default {
 
 #### Composition
 
-```js
+```vue
 <script setup>
 import { ref } from 'vue'
 
@@ -91,7 +91,7 @@ const titleClass = ref('brand')
 
 #### Options
 
-```js
+```vue
 <script>
 export default {
   data() {
@@ -114,7 +114,7 @@ export default {
 
 #### Composition
 
-```js
+```vue
 <script setup>
 import { ref } from 'vue'
 
@@ -136,7 +136,7 @@ function inc() {
 
 #### Options
 
-```js
+```vue
 <script>
 export default {
   data() {
@@ -148,14 +148,16 @@ export default {
 </script>
 
 <template>
-  <input v-model="text" placeholder="Enter text">
-  <p>{{ text }}</p>
+  <div>
+    <input v-model="text" placeholder="Enter text" />
+    <p>{{ text }}</p>
+  </div>
 </template>
 ```
 
 #### Composition
 
-```js
+```vue
 <script setup>
 import { ref } from 'vue'
 
@@ -163,8 +165,10 @@ const text = ref('')
 </script>
 
 <template>
-  <input v-model="text" placeholder="Enter text">
-  <p>{{ text }}</p>
+  <div>
+    <input v-model="text" placeholder="Enter text" />
+    <p>{{ text }}</p>
+  </div>
 </template>
 ```
 
@@ -174,46 +178,50 @@ const text = ref('')
 
 #### Options
 
-```js
+```vue
 <script>
 export default {
   data() {
     return {
-      show: true
-    }
+      show: true,
+    };
   },
   methods: {
     toggle() {
-      this.show = !this.show
-    }
-  }
-}
+      this.show = !this.show;
+    },
+  },
+};
 </script>
 
 <template>
-  <button @click="toggle">toggle</button>
-  <h1 v-if="show">Sionnach Solutions is awesome! 🦊</h1>
-  <h1 v-else>Sionnach Buí is even more awesome! 🦊🐈</h1>
+  <div>
+    <button @click="toggle">toggle</button>
+    <h1 v-if="show">Sionnach Solutions is awesome! 🦊</h1>
+    <h1 v-else>Sionnach Buí is even more awesome! 🦊🐈</h1>
+  </div>
 </template>
 ```
 
 #### Composition
 
-```js
+```vue
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const show = ref(true)
+const show = ref(true);
 
 function toggle() {
-  show.value = !show.value
+  show.value = !show.value;
 }
 </script>
 
 <template>
-  <button @click="toggle">toggle</button>
-  <h1 v-if="show">Sionnach Solutions is awesome! 🦊</h1>
-  <h1 v-else>Sionnach Buí is even more awesome! 🦊🐈</h1>
+  <div>
+    <button @click="toggle">toggle</button>
+    <h1 v-if="show">Sionnach Solutions is awesome! 🦊</h1>
+    <h1 v-else>Sionnach Buí is even more awesome! 🦊🐈</h1>
+  </div>
 </template>
 ```
 
@@ -223,81 +231,85 @@ function toggle() {
 
 #### Options
 
-```js
+```vue
 <script>
 // give each todo a unique id
-let id = 0
+let id = 0;
 
 export default {
   data() {
     return {
-      newTodo: '',
+      newTodo: "",
       todo: [
-        { id: id++, text: 'Yes' },
-        { id: id++, text: 'No' },
-        { id: id++, text: 'Maybe' }
-      ]
-    }
+        { id: id++, text: "Yes" },
+        { id: id++, text: "No" },
+        { id: id++, text: "Maybe" },
+      ],
+    };
   },
   methods: {
     addTodo() {
-      this.todos.push({ id: id++, text: this.newTodo })
-      this.newTodo = ''
+      this.todos.push({ id: id++, text: this.newTodo });
+      this.newTodo = "";
     },
     removeTodo(todo) {
-      this.todos = this.todos.filter((t) => t !== todo)
-    }
-  }
-}
+      this.todos = this.todos.filter((t) => t !== todo);
+    },
+  },
+};
 </script>
 
 <template>
-  <input v-model="newTodo" @keyup.enter="addTodo">
-  <button @click="addTodo">Add Todo</button>
-  <ul>
-    <li v-for="todo in todos" :key="todo.id">
-      {{ todo.text }}
-      <button @click="removeTodo(todo)">X</button>
-    </li>
-  </ul>
+  <div>
+    <input v-model="newTodo" @keyup.enter="addTodo" />
+    <button @click="addTodo">Add Todo</button>
+    <ul>
+      <li v-for="todo in todos" :key="todo.id">
+        {{ todo.text }}
+        <button @click="removeTodo(todo)">X</button>
+      </li>
+    </ul>
+  </div>
 </template>
 ```
 
 #### Composition
 
-```js
+```vue
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
 // give each todo a unique id
-let id = 0
+let id = 0;
 
-const newTodo = ref('')
+const newTodo = ref("");
 const todos = ref([
-  { id: id++, text: 'Yes' },
-  { id: id++, text: 'No' },
-  { id: id++, text: 'Maybe' }
-])
+  { id: id++, text: "Yes" },
+  { id: id++, text: "No" },
+  { id: id++, text: "Maybe" },
+]);
 
 function addTodo() {
-  todos.value.push({ id: id++, text: newTodo.value })
-  newTodo.value = ''
+  todos.value.push({ id: id++, text: newTodo.value });
+  newTodo.value = "";
 }
 
 function removeTodo(todo) {
-  todos.value = todos.value.filter((t) => t !== todo)
+  todos.value = todos.value.filter((t) => t !== todo);
 }
 </script>
 
 <template>
-  <input v-model="newTodo" @keyup.enter="addTodo">
-  <button @click="addTodo">Add Todo</button>
-  <ul>
-    <li v-for="todo in todos" :key="todo.id">
-      {{ todo.text }}
-      <button @click="removeTodo(todo)">X</button>
-    </li>
-  </ul>
+  <div>
+    <input v-model="newTodo" @keyup.enter="addTodo" />
+    <button @click="addTodo">Add Todo</button>
+    <ul>
+      <li v-for="todo in todos" :key="todo.id">
+        {{ todo.text }}
+        <button @click="removeTodo(todo)">X</button>
+      </li>
+    </ul>
+  </div>
 </template>
 ```
 
@@ -307,54 +319,56 @@ function removeTodo(todo) {
 
 #### Options
 
-```js
+```vue
 <script>
-let id = 0
+let id = 0;
 
 export default {
   data() {
     return {
-      newTodo: '',
+      newTodo: "",
       hideCompleted: false,
       todos: [
-        { id: id++, text: 'Yes', done: false },
-        { id: id++, text: 'No', done: false },
-        { id: id++, text: 'Maybe', done: false }
-      ]
-    }
+        { id: id++, text: "Yes", done: false },
+        { id: id++, text: "No", done: false },
+        { id: id++, text: "Maybe", done: false },
+      ],
+    };
   },
   computed: {
     filteredTodos() {
       return this.hideCompleted
         ? this.todos.filter((t) => !t.done)
-        : this.todos
-    }
+        : this.todos;
+    },
   },
   methods: {
     addTodo() {
-      this.todos.push({ id: id++, text: this.newTodo, done: false })
-      this.newTodo = ''
+      this.todos.push({ id: id++, text: this.newTodo, done: false });
+      this.newTodo = "";
     },
     removeTodo(todo) {
-      this.todos = this.todos.filter((t => t !== todo)
-    }
-  }
-}
+      this.todos = this.todos.filter((t) => t !== todo);
+    },
+  },
+};
 </script>
 
 <template>
-  <input v-model="newTodo" @keyup.enter="addTodo" />
-  <button @click="addTodo">Add Todo</button>
-  <ul>
-    <li v-for="todo in filteredTodos" :key="todo.id">
-      <input type="checkbox" v-model="todo.done" />
-      <span :class="{ done: todo.done }">{{ todo.text }}</span>
-      <button @click="removeTodo(todo)">X</button>
-    </li>
-  </ul>
-  <button @click="hideCompleted = !hideCompleted">
-    {{ hideCompleted ? 'Show all' : 'Hide completed' }}
-  </button>
+  <div>
+    <input v-model="newTodo" @keyup.enter="addTodo" />
+    <button @click="addTodo">Add Todo</button>
+    <ul>
+      <li v-for="todo in filteredTodos" :key="todo.id">
+        <input type="checkbox" v-model="todo.done" />
+        <span :class="{ done: todo.done }">{{ todo.text }}</span>
+        <button @click="removeTodo(todo)">X</button>
+      </li>
+    </ul>
+    <button @click="hideCompleted = !hideCompleted">
+      {{ hideCompleted ? "Show all" : "Hide completed" }}
+    </button>
+  </div>
 </template>
 
 <style>
@@ -366,49 +380,49 @@ export default {
 
 #### Composition
 
-```js
+```vue
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
 
-let id = 0
+let id = 0;
 
-const newTodo = ref('')
-const hideCompleted = ref(false)
+const newTodo = ref("");
+const hideCompleted = ref(false);
 const todos = ref([
-  { id: id++, text: 'Yes', done: false },
-  { id: id++, text: 'No', done: false },
-  { id: id++, text: 'Maybe', done: false }
-])
+  { id: id++, text: "Yes", done: false },
+  { id: id++, text: "No", done: false },
+  { id: id++, text: "Maybe", done: false },
+]);
 
 const filteredTodos = computed(() => {
-  return hideCompleted.value
-    ? todos.value.filter((t) => !t.done)
-    : todos.value
-})
+  return hideCompleted.value ? todos.value.filter((t) => !t.done) : todos.value;
+});
 
 function addTodo() {
-  todos.value.push({ id: id++, text: newTodo.value, done: false })
-  newTodo.value = ''
+  todos.value.push({ id: id++, text: newTodo.value, done: false });
+  newTodo.value = "";
 }
 
 function removeTodo(todo) {
-  todos.value = todos.value.filter((t) => t !== todo)
+  todos.value = todos.value.filter((t) => t !== todo);
 }
 </script>
 
 <template>
-  <input v-model="newTodo" @keyup.enter="addTodo" />
-  <button @click="addTodo">Add Todo</button>
-  <ul>
-    <li v-for="todo in filteredTodos" :key="todo.id">
-      <input type="checkbox" v-model="todo.done" />
-      <span :class="{ done: todo.done }">{{ todo.text }}</span>
-      <button @click="removeTodo(todo)">X</button>
-    </li>
-  </ul>
-  <button @click="hideCompleted = !hideCompleted">
-    {{ hideCompleted ? 'Show all' : 'Hide completed' }}
-  </button>
+  <div>
+    <input v-model="newTodo" @keyup.enter="addTodo" />
+    <button @click="addTodo">Add Todo</button>
+    <ul>
+      <li v-for="todo in filteredTodos" :key="todo.id">
+        <input type="checkbox" v-model="todo.done" />
+        <span :class="{ done: todo.done }">{{ todo.text }}</span>
+        <button @click="removeTodo(todo)">X</button>
+      </li>
+    </ul>
+    <button @click="hideCompleted = !hideCompleted">
+      {{ hideCompleted ? "Show all" : "Hide completed" }}
+    </button>
+  </div>
 </template>
 
 <style>
@@ -426,7 +440,7 @@ function removeTodo(todo) {
 
 #### Options
 
-```js
+```vue
 <script>
 export default {
   mounted() {
@@ -442,7 +456,7 @@ export default {
 
 #### Composition
 
-```js
+```vue
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -464,74 +478,78 @@ onMounted(() => {
 
 #### Options
 
-```js
+```vue
 <script>
 export default {
   data() {
     return {
       count: 1,
-      randomUser: null
-    }
+      randomUser: null,
+    };
   },
   methods: {
     async fetchRandomUser() {
-      this.randomUser = null
+      this.randomUser = null;
       const res = await fetch(
         `https://jsonplaceholder.typicode.com/users/${
-        	Math.floor(Math.random() * 9) + 1
+          Math.floor(Math.random() * 9) + 1
         }`
-      )
-      this.randomUser = await res.json()
-    }
+      );
+      this.randomUser = await res.json();
+    },
   },
   mounted() {
-    this.fetchRandomUser()
+    this.fetchRandomUser();
   },
   watch: {
     count() {
-      this.fetchRandomUser()
-    }
-  }
-}
+      this.fetchRandomUser();
+    },
+  },
+};
 </script>
 
 <template>
-  <p>Query Count: {{ count }}</p>
-  <button @click="count++">Fetch Random User</button>
-  <p v-if="!randomUser">Fetching Random User...</p>
-  <pre v-else>{{ randomUser }}</pre>
+  <div>
+    <p>Query Count: {{ count }}</p>
+    <button @click="count++">Fetch Random User</button>
+    <p v-if="!randomUser">Fetching Random User...</p>
+    <pre v-else>{{ randomUser }}</pre>
+  </div>
 </template>
 ```
 
 #### Composition
 
-```js
+```vue
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch } from "vue";
 
-const count = ref(1)
-const randomUser = ref(null)
+const count = ref(1);
+const randomUser = ref(null);
 
 async function fetchRandomUser() {
-  randomUser.value = null
+  randomUser.value = null;
   const res = await fetch(
-        `https://jsonplaceholder.typicode.com/users/${
-        	Math.floor(Math.random() * 9) + 1
-        }`
-      )
-  randomUser.value = await res.json()
+    `https://jsonplaceholder.typicode.com/users/${
+      Math.floor(Math.random() * 9) + 1
+    }`
+  );
+  randomUser.value = await res.json();
 }
 
-fetchRandomUser()
+fetchRandomUser();
 
-watch(count, fetchRandomUser)
+watch(count, fetchRandomUser);
 </script>
 
 <template>
-  <p>Query Count: {{ count }}</p>
-  <button @click="count++">Fetch Random User</button>
-  <p v-if="!randomUser">Fetching Random User...</p>
-  <pre v-else>{{ randomUser }}</pre>
+  <div>
+    <p>Query Count: {{ count }}</p>
+    <button @click="count++">Fetch Random User</button>
+    <p v-if="!randomUser">Fetching Random User...</p>
+    <pre v-else>{{ randomUser }}</pre>
+  </div>
 </template>
 ```
 
@@ -539,7 +557,7 @@ watch(count, fetchRandomUser)
 
 [Basics Guide 🏹](https://staging.vuejs.org/guide/essentials/component-basics.html)
 
-```js
+```vue
 // AlienComponent.vue
 <template>
   <h2>Congratulations! It's an alien! 👽</h2>
@@ -548,7 +566,7 @@ watch(count, fetchRandomUser)
 
 #### Options
 
-```js
+```vue
 <script>
 import AlienChild from './AlienComponent.vue'
 
@@ -566,7 +584,7 @@ export default {
 
 #### Composition
 
-```js
+```vue
 <script setup>
 import AlienChild from './AlienComponent.vue'
 </script>
@@ -582,7 +600,7 @@ import AlienChild from './AlienComponent.vue'
 
 #### Options
 
-```js
+```vue
 // AlienComponent.vue
 <script>
 export default {
@@ -597,7 +615,7 @@ export default {
 </template>
 ```
 
-```js
+```vue
 <script>
 import AlienChild from './AlienComponent.vue'
 
@@ -620,7 +638,7 @@ export default {
 
 #### Composition
 
-```js
+```vue
 // AlienComponent.vue
 <script setup>
 const props = defineProps({
@@ -633,7 +651,7 @@ const props = defineProps({
 </template>
 ```
 
-```js
+```vue
 <script setup>
 import { ref } from 'vue'
 import AlienChild from './AlienComponent.vue'
@@ -652,7 +670,7 @@ const greeting = ref('Mommy loves you!')
 
 #### Options
 
-```js
+```vue
 // AlienComponent.vue
 <script>
 export default {
@@ -668,31 +686,33 @@ export default {
 </template>
 ```
 
-```js
+```vue
 <script>
-import AlienChild from './AlienComponent.vue'
+import AlienChild from "./AlienComponent.vue";
 
 export default {
   components: {
-    AlienChild
+    AlienChild,
   },
   data() {
     return {
-      phoneCall: 'No call yet 😱'
-    }
-  }
-}
+      phoneCall: "No call yet 😱",
+    };
+  },
+};
 </script>
 
 <template>
-  <AlienChild @response="(msg) => phoneCall = msg" />
-  <p>{{ phoneCall }}</p>
+  <div>
+    <AlienChild @response="(msg) => (phoneCall = msg)" />
+    <p>{{ phoneCall }}</p>
+  </div>
 </template>
 ```
 
 #### Composition
 
-```js
+```vue
 // AlienComponent.vue
 <script setup>
 const emit = defineEmits(['response'])
@@ -705,7 +725,7 @@ emit('response', 'ET Phone Home!')
 </template>
 ```
 
-```js
+```vue
 <script setup>
 import { ref } from 'vue'
 import AlienChild from './AlienComponent.vue'
@@ -723,29 +743,29 @@ const phoneCall = ref('No call yet 😱')
 
 [Guide 🏹](https://staging.vuejs.org/guide/components/slots.html)
 
-```js
+```vue
 // AlienComponent.vue
 <template>
-  <slot>Fallback content</slot>
+  <slot>The truth is out there</slot>
 </template>
 ```
 
 #### Options
 
-```js
+```vue
 <script>
-import AlienChild from './AlienComponent.vue'
+import AlienChild from "./AlienComponent.vue";
 
 export default {
   components: {
-    AlienChild
+    AlienChild,
   },
   data() {
     return {
-      msg: '👽'
-    }
-  }
-}
+      msg: "👽",
+    };
+  },
+};
 </script>
 
 <template>
@@ -755,7 +775,7 @@ export default {
 
 #### Composition
 
-```js
+```vue
 <script setup>
 import { ref } from 'vue'
 import AlienChild from './AlienComponent.vue'
